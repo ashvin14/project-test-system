@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.banner {
+    background-color: #637a91;
+    color: white;
+}
+
+.login-box {
+    border-radius: 4px;
+}
+.navbar-fixed {
+	margin-bottom:38px;
+}
+nav ul li a{
+	color:#7b8b8e;
+}
+.introduction h6{
+	color:white;
+	font-weight: 400
+}
+nav{
+	background-color: white;
+	color:black;
+}
+.page-footer{
+
+	background-color:#464646;
+	color:white;
+}
+.introduction p{
+	color:white;
+}
+.google{
+	background-color: #E57373;
+}
+.facebook{
+	background-color: #637a91;
+}
+.input{
+	border-radius: 20px;
+    border: solid #d8d1d1;
+    margin: 33px 0 66px 0;
+}

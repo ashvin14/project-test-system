@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+        <div class="col m12 s12 ">
+            <div class="section banner">
+                <p class="flow-text center-align">Questions</p>
+            </div>
+            <div class="divider"></div>
+            <div class="input-for-test white">
+                <div class="row">
+                    <div class="col m8 offset-m2 s12">
+                        <div class="section">
+                            <div class="input">
+                                <div class="row">
+                                    <div class="col m10">
+                                        <div class="input-field col m12 offset-s3">
+                                            <input id="first_name2" type="text" class="validate" ng-model="createQuesCtrl.question">
+                                            <label class="active" for="first_name2">Question </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col m12">
+                                        <div class="input-field col m3">
+                                            <input id="first_name2" type="text" class="validate" ng-model="createQuesCtrl.option1">
+                                            <label class="active" for="first_name2">Option A</label>
+                                        </div>
+                                        <div class="input-field col m3">
+                                            <input id="first_name2" type="text" class="validate" ng-model="createQuesCtrl.option2">
+                                            <label class="active" for="first_name2">Option B</label>
+                                        </div>
+                                        <div class="input-field col m3">
+                                            <input id="first_name2" type="text" class="validate" ng-model="createQuesCtrl.option3">
+                                            <label class="active" for="first_name2">Option C</label>
+                                        </div>
+                                        <div class="input-field col m3">
+                                            <input id="first_name2" type="text" class="validate" ng-model="createQuesCtrl.option4">
+                                            <label class="active" for="first_name2">Option D</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col m5 offset-m3 s12">
+
+                                        <div class="collection">
+                                        	<div class="collection-item">Set Correct Option</div>
+                                            <a class="collection-item " ng-click="createQuesCtrl.tab=1" ng-class="{active:createQuesCtrl.tab==1}">option A</a>
+                                            <a class="collection-item" ng-click="createQuesCtrl.tab=2" ng-class="{active:createQuesCtrl.tab==2}">option B</a>
+                                            <a class="collection-item" ng-click="createQuesCtrl.tab=3" ng-class="{active:createQuesCtrl.tab==3}">option C</a>
+                                            <a class="collection-item" ng-click="createQuesCtrl.tab=4" ng-class="{active:createQuesCtrl.tab==4}">option D</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col m2 btn waves-effect offset-m4" ng-click="createQuesCtrl.addQuestion()">
+                                    add Question
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+{
+  "name": "test-system",
+  "version": "1.0.0",
+  "description": "A test system to get actual and direct results with realtime scores made to help you realize where you stand",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashvin14/project-test-system.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Ashvin Khairnar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashvin14/project-test-system/issues"
+  },
+  "homepage": "https://github.com/ashvin14/project-test-system#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.11.0",
+    "morgan": "^1.8.2",
+    "nodemailer": "^4.0.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth2": "^0.1.6",
+    "socket.io": "^2.0.3",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
