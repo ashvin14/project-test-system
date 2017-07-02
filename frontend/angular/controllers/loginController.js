@@ -19,11 +19,11 @@ app.controller('loginController',function(apiservice,$window){
 				return null
 			}
 			if(response.data.user.type == 'admin'){
-				$window.sessionStorage.user= response.data.user;
+				$window.sessionStorage.user= response.data.user.name;
 				window.location="#/admin"
 			}
 			else{
-				$window.sessionStorage.user= response.data.user;
+				$window.sessionStorage.user= response.data.user.name;
 				window.location="#/user"
 			}
 

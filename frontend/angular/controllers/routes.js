@@ -38,11 +38,21 @@ app.config(['$routeProvider', function($routeProvider) {
             controllerAs: 'createQuesCtrl'
 
         })
-        .when('/loggedIn/upload', {
-            templateUrl: 'views/query-upload.html',
-            controller: 'queryUploadController',
-            controllerAs: 'queryUpload'
+        .when('/user/take_test', {
+            templateUrl: 'angular/views/user-dashboard.html',
+            controller: 'alltestloader',
+            controllerAs: 'testLoader'
 
+        }).when('/user/take_test/:id', {
+            templateUrl: 'angular/views/attempt_test.html',
+            controller: 'singleTestLoader',
+            controllerAs: 'singleTestCtrl'
+
+        })
+        .when('/user/take_test/scorecard/:id',{
+            templateUrl:'angular/views/scorecard.html',
+            controller:'scorecardController',
+            controllerAs:'scorecard'
         })
 
     /*

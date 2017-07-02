@@ -43,5 +43,38 @@ app.service('apiservice',function($http){
 			url:'./admin/create_test/'+id
 		})
 	}
+	this.getAllTest = function(){
+		return $http({
+			method:'GET',
+			url:'./user/take_test'
+		})
+	}
+	this.sendTestId = function(id){
+		return $http({
+			method:'GET',
+			url:'./user/take_test/'+id
+		})
+	}
+	this.sendAnswer = function(data){
+		return $http({
+			method:'POST',
+			url:'./user/take_test/solution',
+			data:data
+		})
+	}
+	this.sendResults = function(data){
+		return $http({
+			method:'POST',
+			url:'./user/scorecard',
+			data:data
+		})
+	}
+	this.getResults = function(id){
+		return $http({
+			method:'GET',
+			url:'./user/scorecard/'+id
+
+		})
+	}
 
 })

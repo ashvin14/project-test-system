@@ -49,3 +49,12 @@ nav{
     border: solid #d8d1d1;
     margin: 33px 0 66px 0;
 }
+a .card-action{
+	color:white;
+}
+.card-content{
+	word-wrap: break-word;
+}
+.questions .section{
+	padding-left:5%;
+}

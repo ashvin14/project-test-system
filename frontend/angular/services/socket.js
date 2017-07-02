@@ -2,7 +2,7 @@
  
 app.factory('socket', function($rootScope) {
 
-    var socket = io();
+    var socket = io.connect('http://localhost:8080/take_test');
 
     return {
         on: function(eventName, callback) {

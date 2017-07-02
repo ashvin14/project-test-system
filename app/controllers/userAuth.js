@@ -34,7 +34,7 @@ const route = express.Router(),
 
 
 
-exports.controllerFunction = function(app) {
+exports.controllerFunction = function(app,io) {
 
 
     
@@ -186,8 +186,7 @@ exports.controllerFunction = function(app) {
                     } else
                         request.session.user = admin;
                     response.json(request.session)
-                    console.log(request.session)
-
+                    
 
                 }
             })

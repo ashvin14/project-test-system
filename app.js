@@ -3,6 +3,7 @@ const fs = require('fs');
 //fs module to to read directory and include all required controllers and model files
 // in main app
 
+
 const express = require('express');
 
 //In this project we are going to use express library 
@@ -22,6 +23,7 @@ app.use(require('morgan')('dev'))
 app.use(bodyParser());
 //initialized body parser
 //intialized in my directory
+
 app.use('/', express.static(__dirname + '/frontend/'));
 app.use(require('cookie-parser')());
 app.use(require('express-session')({

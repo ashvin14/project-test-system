@@ -7,12 +7,12 @@ var testModel = require('./../models/testModel.js')
 var isloggedIn = require('./../middlewares/isloggedIn.js')
 
 
-exports.controllerFunction = function(app) {
+exports.controllerFunction = function(app,io) {
 
 
     route.post('/create_test', function(req, res) {
         var test = new testModel({
-            test_name: req.body.test_name,
+            testName: req.body.test_name,
             test_details:req.body.test_details,
             total_questions:req.body.total_questions,
             total_score: req.body.total_score,

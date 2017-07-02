@@ -1,0 +1,49 @@
+<div class="container white">
+    <div class="section banner">
+        <h4 class="center-align"> Test </h4>
+    </div>
+    <div class="row">
+        <div class=" questions col m8 s12 offset-s2 ">
+            <div >
+                <div class="section">
+                	<p class="left-align">Time {{singleTestCtrl.minutes}}:{{singleTestCtrl.seconds}}</p>
+                    <p class="left-align"> Q {{singleTestCtrl.index+1}}: {{singleTestCtrl.question[singleTestCtrl.index].Question}}</p>
+                    <p>
+                        <input name="group1" ng-model="singleTestCtrl.options" type="radio" id="test1" ng-value="'Option_A'" />
+                        <label for="test1">{{singleTestCtrl.question[singleTestCtrl.index].Option_A}} </label>
+                    </p>
+                    <p>
+                        <input name="group1" ng-model="singleTestCtrl.options" type="radio" id="test2" ng-value="'Option_B'" />
+                        <label for="test2">{{singleTestCtrl.question[singleTestCtrl.index].Option_B}}</label>
+                    </p>
+                    <p>
+                        <input name="group1" ng-model="singleTestCtrl.options" type="radio" id="test3" ng-value="'Option_C'" />
+                        <label for="test3">{{singleTestCtrl.question[singleTestCtrl.index].Option_C}}</label>
+                    </p>
+                    <p>
+                        <input name="group1" ng-model="singleTestCtrl.options" type="radio" id="test4" ng-value="'Option_D'" />
+                        <label for="test4">{{singleTestCtrl.question[singleTestCtrl.index].Option_D}}</label>
+                    </p>
+                </div>
+                <div>
+                	<p class=" col m4 s12 offset-m2">
+                        <a ng-click="singleTestCtrl.setOption(singleTestCtrl.question[singleTestCtrl.index]._id)" class="waver-effect waves-light btn ">Next Question</a>
+                    </p>
+                	
+                </div>
+                <div class="divider"></div>
+            </div>
+            <p class="center-align col ">
+                <a href="#/user/take_test/scorecard/{{$routeParams.id}}" class="waver-effect waves-light btn offet-m5 offset-s6">End Test</a>
+            </p>
+        </div>
+        <div class="col m4 s12 ">
+            <ul class="collection">
+                <a href="#/user/" class="collection-item">dashboard</a>
+                <a href="#!" class="collection-item active">take test</a>
+                <a href="#!" class="collection-item">Alvin</a>
+                <a href="#!" class="collection-item">Alvin</a>
+            </ul>
+        </div>
+    </div>
+</div>
