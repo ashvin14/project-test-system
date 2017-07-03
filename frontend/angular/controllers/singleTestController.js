@@ -1,11 +1,16 @@
-app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiservice', function($window, socket, $routeParams, apiservice) {
+app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiservice','$scope' ,function($window, socket, $routeParams, apiservice,$scope) {
     var main = this;
     var length;
     var selectedOptions  = [];
     main.index = 0;
     var time1 = 0;
-    if (!$window.sessionStorage.user)
-        window.location = "#/"
+   $scope.$on('$destroy', function (event) {
+        console.log('controller destroyed')
+        socket.emit('disconnect socket');
+       
+    });
+    /*if (!$window.sessionStorage.user)
+        window.location = "#/"*/
     socket.on('time', function(time) {
         if (main.index < length) {
 

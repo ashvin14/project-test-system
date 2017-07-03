@@ -1,5 +1,3 @@
-
- 
 app.factory('socket', function($rootScope) {
 
     var socket = io.connect('http://localhost:8080/take_test');
@@ -25,6 +23,16 @@ app.factory('socket', function($rootScope) {
                     }
                 });
             });
+        },
+        removeAllListeners: function(eventName, callback) {
+            socket.removeAllListeners(eventName, function() {
+                var args = arguments;
+                $rootScope.$apply(function() {
+                    callback.apply(socket, args);
+                });
+            });
         }
     };
+
+
 });

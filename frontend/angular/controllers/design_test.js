@@ -22,13 +22,15 @@ app.controller('createQuestionController', function(apiservice, $routeParams, $w
     var main = this;
     main.array = []
 
-    var index = 1;
+    main.index = 1;
+
 
     this.addQuestion = function() {
-        if (index == $window.sessionStorage.total_questions ) {
+        if (main.index > $window.sessionStorage.total_questions ) {
             window.location = "#/admin"
         }
-        if (index < $window.sessionStorage.total_questions) {
+
+        if (main.index <= $window.sessionStorage.total_questions) {
             if (main.tab == 1)
                 main.correct_option = 'Option_A';
             if (main.tab == 2)
@@ -49,7 +51,9 @@ app.controller('createQuestionController', function(apiservice, $routeParams, $w
 
             apiservice.addQuestion(data, $routeParams.id).then(function(response) {
                 main.question = main.option1 = main.option2 = main.option3 = main.option4 = main.correct_option = main.question = ""
-                index++;
+                main.index++;
+                if (response.data.notLoggedIn == true)
+                    window.location = "/#"
 
 
             })

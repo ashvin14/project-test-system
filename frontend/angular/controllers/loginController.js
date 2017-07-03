@@ -33,14 +33,20 @@ app.controller('loginController',function(apiservice,$window){
 
 	}
 	this.googleLogin = function(){
+		$window.sessionStorage.user = "passport"
 		apiservice.googleLogin().then(function(response){
-			window.location="#/user"
-
+			
 		})
 	}
 	this.facebookLogin = function(){
+		$window.sessionStorage.user = "passport"
 		apiservice.facebookLogin().then(function(response){
-			window.location="#/user"
+			
+		})
+	}
+	this.loggout = function(){
+		apiservice.loggout().then(function(response){
+			window.location="#/"
 		})
 	}
 

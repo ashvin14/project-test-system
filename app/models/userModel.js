@@ -9,7 +9,8 @@ var userModel = new Schema({
 
     password: { type: String },
     type: { type: String, default: 'user' },
-    phone_no: { type: Number }
+    phone_no: { type: Number },
+    test_attempted: [{ type: mongoose.Schema.Types.ObjectId ,default:[]}]
 
 
 })

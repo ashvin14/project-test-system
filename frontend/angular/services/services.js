@@ -76,5 +76,23 @@ app.service('apiservice',function($http){
 
 		})
 	}
+	this.getTestId = function(){
+		return $http({
+			method:'GET',
+			url:'./user/'
+		})
+	}
+	this.getTestFromId = function(id){
+		return $http({
+			method:'GET',
+			url:'./user/'+id
+		})
+	}
+	this.loggout = function(){
+		return $http({
+			method:'GET',
+			url:'./userAuth/loggout'
+		})
+	}
 
 })

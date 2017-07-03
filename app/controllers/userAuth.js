@@ -34,10 +34,10 @@ const route = express.Router(),
 
 
 
-exports.controllerFunction = function(app,io) {
+exports.controllerFunction = function(app, io) {
 
 
-    
+
 
 
     function functionToGetPhoneNo(email) {
@@ -61,17 +61,24 @@ exports.controllerFunction = function(app,io) {
 
 
         return new promise(function(resolve, reject) {
-            var user = new userModel({
-                name: name,
-                emailId: email
-
-            })
-
-
-            user.save(function(er, result) {
-                if (er) throw er;
-                else
-                    resolve(result)
+            userModel.find({ $and: [{ name: name }, { emailId: email }] }, function(err, result) {
+                if (err) throw err;
+                else {
+                    if (result.length == 0) {
+                        var user = new userModel({
+                            name: name,
+                            emailId: email,
+                            type: 'user'
+                        })
+                        user.save(function(err, user) {
+                            if (err) throw err;
+                            else
+                                resolve(user)
+                        })
+                    } else {
+                        resolve(result)
+                    }
+                }
             })
 
 
@@ -105,7 +112,7 @@ exports.controllerFunction = function(app,io) {
         functionToSaveUserInDb(profile.name.givenName, profile.emails[0].value).then(function(response) {
 
 
-            console.log(response)
+
         })
 
 
@@ -126,8 +133,8 @@ exports.controllerFunction = function(app,io) {
             functionToSaveUserInDb(profile.name.givenName, profile.emails[0].value).then(function(response) {
 
 
-            console.log(response)
-        })
+
+            })
 
 
 
@@ -151,23 +158,30 @@ exports.controllerFunction = function(app,io) {
     route.get('/login/facebook', passport.authenticate('facebook'), function(request, response) {
 
     })
-    route.get('/login/successful/facebook', passport.authenticate('facebook', { failedRedirect: '/', scope: ['emails'] }), function(request, response) {
-        request.session.user = request.session.passport.user;
-        response.redirect('/#/user')
-
-
-
+    route.get('/login/successful/facebook', passport.authenticate('facebook', { failedRedirect: '/', scope: ['emails'] }), function(req, res) {
+        console.log(req.session)
+        userModel.findOne({ $and: [{ name: req.session.passport.user.name.givenName }, { emailId: req.session.passport.user.emails[0].value }] }, function(err, result) {
+            if (err) throw err;
+            else {
+                req.session.user = result;
+                console.log(req.session)
+                res.redirect('/#/user')
+            }
+        })
     })
     route.get('/login/google', passport.authenticate('google', { scope: ['email', 'profile'] }))
 
 
-    route.get('/login/successful/google', passport.authenticate('google', { failedRedirect: '/' }), function(request, response) {
-        //add redirect here
-        request.session.user = request.session.passport.user;
-        response.redirect('/#/user')
-
-
-
+    route.get('/login/successful/google', passport.authenticate('google', { failedRedirect: '/' }), function(req, res) {
+        console.log(req.session)
+        userModel.findOne({ $and: [{ name: req.session.passport.user.name.givenName }, { emailId: req.session.passport.user.emails[0].value }] }, function(err, result) {
+            if (err) throw err;
+            else {
+                req.session.user = result;
+                console.log(req.session)
+                res.redirect('/#/user')
+            }
+        })
     })
     route.post('/login', function(request, response) {
         if (request.body.password != undefined && request.body.email != undefined) {
@@ -178,7 +192,7 @@ exports.controllerFunction = function(app,io) {
                 if (result.length == 0)
                     response.json({ "status": "user not found" });
                 else {
-                   
+
                     if (result[0].type == 'user') {
                         delete result[0].testsTaken;
 
@@ -186,7 +200,7 @@ exports.controllerFunction = function(app,io) {
                     } else
                         request.session.user = admin;
                     response.json(request.session)
-                    
+
 
                 }
             })
@@ -217,7 +231,7 @@ exports.controllerFunction = function(app,io) {
             else {
                 console.log(result.length)
                 if (result.length == 0) {
-                    res.json({"verified":false})
+                    res.json({ "verified": false })
 
                 } else {
                     code = speakeasy.totp({ secret: 'abc123' })
@@ -247,25 +261,25 @@ exports.controllerFunction = function(app,io) {
                             console.log('Message sent: ' + info.response);
                         }
                     });
-                    res.json({"code":code})
+                    res.json({ "code": code })
 
 
                 };
             }
         })
 
-        
+
 
 
     })
     route.put('/changepassword', function(req, res) {
         if (req.body.password != undefined) {
-            userModel.findOneAndUpdate({emailId:req.body.email},{
-                $set:{
-                    password:req.body.password
+            userModel.findOneAndUpdate({ emailId: req.body.email }, {
+                $set: {
+                    password: req.body.password
                 }
-            },function(error,result){
-                if(error)throw error;
+            }, function(error, result) {
+                if (error) throw error;
                 else
                     res.json(result)
             })

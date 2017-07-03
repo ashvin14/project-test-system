@@ -6,7 +6,7 @@ var testModel = require('./../models/testModel.js')
 var ObjectId = mongoose.Types.ObjectId;
 var QuestionModel = require('./../models/Question_model.js')
 var scoreModel = require('./../models/scoreModel.js');
-
+var userModel = require('./../models/userModel.js')
 var isloggedIn = require('./../middlewares/isloggedIn.js')
 var _socket = null;
 var solutionModel = require('./../models/solutionModel.js')
@@ -20,6 +20,7 @@ exports.controllerFunction = function(app) {
     var io = require('socket.io').listen(server)
 
     route.get('/take_test', function(req, res) {
+
         testModel.find({}, function(er, result) {
             if (er) throw er;
             else
@@ -30,7 +31,31 @@ exports.controllerFunction = function(app) {
     var dummyTime;
     var time;
     var userName
+    route.get('/', function(req, res) {
+       
+        userModel.findOne({ _id: ObjectId(req.session.user._id) }, function(err, result) {
+            if (err) throw err;
+            else {
+                res.json(result.test_attempted)
+            }
+        })
+    })
+    route.get('/:id', function(req, res) {
+        testModel.find({_id:ObjectId(req.params.id)},function(err,result){
+            if(err) throw err;
+            else{
+                console.log(result)
+                res.json(result)
+            }
+        })
+    })
     route.get('/take_test/:id', function(req, res) {
+        userModel.findOneAndUpdate({ _id: ObjectId(req.session.user._id) }, { $push: { test_attempted: ObjectId(req.params.id) } }, function(err, result) {
+            if (err) throw err;
+            else
+                console.log(result)
+
+        })
 
         server.listen(8080, function() {
             console.log('socket app started on port:8080')
@@ -38,8 +63,10 @@ exports.controllerFunction = function(app) {
         userName = req.session.user.name;
         testModel.findOne({ _id: ObjectId(req.params.id) }, function(er, result) {
             if (er) throw er;
-            else
+            else {
+                console.log(result)
                 dummyTime = time = result.duration_hours
+            }
             res.json({})
         })
 
@@ -80,7 +107,11 @@ exports.controllerFunction = function(app) {
         }, 1000)
 
 
+        socket.on('disconnect socket', function() {
+            socket.disconnect();
 
+
+        })
         socket.on('disconnect', function() {
             console.log('disconnected')
 
@@ -121,11 +152,11 @@ exports.controllerFunction = function(app) {
             var totalCorrectAnswered = 0;
 
             question.forEach(function(question) {
-                 console.log(question)
-                req.body.solution.forEach(function(sol){
-                   
-                    if(sol.question_id ==question._id){
-                        if(sol.solution == question.correct_option){
+                console.log(question)
+                req.body.solution.forEach(function(sol) {
+
+                    if (sol.question_id == question._id) {
+                        if (sol.solution == question.correct_option) {
                             totalCorrectAnswered++;
                         }
                     }

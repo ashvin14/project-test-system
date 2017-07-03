@@ -4,12 +4,12 @@ app.config(['$routeProvider', function($routeProvider) {
 
             templateUrl: 'angular/views/login-view.html',
             controller: 'loginController',
-            controllerAs:'loginCtrl'
+            controllerAs: 'loginCtrl'
         })
         .when('/forgot-password', {
             templateUrl: 'angular/views/forgot-password.html',
             controller: 'forgotController',
-            controllerAs:'forgotCtrl'
+            controllerAs: 'forgotCtrl'
 
         })
         .when('/otpverification', {
@@ -28,9 +28,6 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'angular/views/admin_create_test.html',
             controller: 'createTestController',
             controllerAs: 'createTestCtrl'
-
-
-
         })
         .when('/admin/create_test/:id', {
             templateUrl: 'angular/views/create-question.html',
@@ -49,20 +46,27 @@ app.config(['$routeProvider', function($routeProvider) {
             controllerAs: 'singleTestCtrl'
 
         })
-        .when('/user/take_test/scorecard/:id',{
-            templateUrl:'angular/views/scorecard.html',
-            controller:'scorecardController',
-            controllerAs:'scorecard'
+        .when('/user/take_test/scorecard/:id', {
+            templateUrl: 'angular/views/scorecard.html',
+            controller: 'scorecardController',
+            controllerAs: 'scorecard'
+        })
+        .when('/signup', {
+            templateUrl: 'angular/views/signup-view.html',
+            controller: 'signupController',
+            controllerAs: 'signupCtrl'
+        })
+        .when('/user', {
+            controller: 'testdashboard',
+            templateUrl: 'angular/views/testdashboard.html',
+            controllerAs: 'testdashboardCtrl'
+        })
+        .when('/user/:test_id',{
+            controller:'analyticsController',
+            controllerAs:'analyticsCtrl',
+            templateUrl:'angular/views/analytics.html'
         })
 
-    /*
-        .when('/edit/:id',{
-
-            templateUrl     : 'views/edit-view.html',
-            controller      :  'editBlogController',
-            controllerAs    : 'editBlgCtrl'
-        })
-*/
     .otherwise({
         //redirectTo:'/'
         template: '<h1>404 page not found</h1>'

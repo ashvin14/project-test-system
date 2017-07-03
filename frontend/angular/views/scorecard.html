@@ -1,32 +1,37 @@
-<div class="container">
-	<div class="row">
-		<div class="col m8 offset-m2">
-			<div class="section banner">
-				<h4 class="center-align">score</h4>
-			</div>
-			<div class="section white">
-				<table>
-					<thead>
-						<tr>
-							<th>test Name</th>
-							<th>completion Time (in hrs)</th>
-							<th>correct answer</th>
-
-							<th>score earned(out of {{scorecard.result.test[0].total_score}})</th>
-						</tr>
-
-					</thead>
-					<tbody>
-						<tr>
-							<td>{{scorecard.testName}}</td>
-							<td>{{scorecard.minutes}}:{{scorecard.seconds}}</td>
-							<td>{{scorecard.result.score[scorecard.result.score.length-1].total_correct_answered}}</td>
-							<td>{{scorecard.score}}</td>
-						</tr>
-					</tbody>
-				</table>
-				
-			</div>
-		</div>
-	</div>
+<div class="container white ">
+    <div class="section banner">
+        <h4 class="center-align">score</h4>
+    </div>
+    <div class="row ">
+        <div class="col m8 ">
+            <div class="section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>test Name</th>
+                            <th>completion Time (in hrs)</th>
+                            <th>correct answer</th>
+                            <th>score earned(out of {{scorecard.result.test[0].total_score}})</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{scorecard.testName}}</td>
+                            <td>{{scorecard.minutes}}:{{scorecard.seconds}}</td>
+                            <td>{{scorecard.result.score[scorecard.result.score.length-1].total_correct_answered}}</td>
+                            <td>{{scorecard.score}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col m4 s12" ng-controller="loginCtrl as loginController">
+            <ul class="collection">
+                <a href="#/user" class="collection-item">dashboard</a>
+                <a href="#/user/take_test" class="collection-item ">take test</a>
+                <a class="collection-item" ng-click="loginCtrl.loggout()">loggout</a>
+                <a href="#!" class="collection-item">Alvin</a>
+            </ul>
+        </div>
+    </div>
 </div>
