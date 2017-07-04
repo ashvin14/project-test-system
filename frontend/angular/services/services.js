@@ -94,5 +94,45 @@ app.service('apiservice',function($http){
 			url:'./userAuth/loggout'
 		})
 	}
+	this.getTestAndScores = function(id){
+		return $http({
+			method:'GET',
+			url:'./user/get/test/and/scores/'+id
+		})
+	}
+	this.loggout = function(){
+		return $http({
+			method:'GET',
+			url:'./userAuth/loggout'
+		})
+	}
+	this.getAllProfiles = function(){
+		return $http({
+			method:'GET',
+			url:'./admin/'
+		})
+
+	}
+	this.getTestForAdminById = function(id){
+		return $http({
+			method:'GET',
+			url:'./admin/'+id
+		})
+	}
+	this.getTestFromIdForAdmin =function(id){
+		return $http({
+			method:'GET',
+			url:'./admin/test/'+id,
+			
+		})
+	}
+	this.getTestAndScoresForAdmin = function(id,DATA){
+		return $http({
+			method:'post',
+			url:'./admin/get/test/and/scores/'+id,
+			data:DATA
+		})
+	}
+
 
 })

@@ -61,10 +61,26 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'angular/views/testdashboard.html',
             controllerAs: 'testdashboardCtrl'
         })
-        .when('/user/:test_id',{
-            controller:'analyticsController',
-            controllerAs:'analyticsCtrl',
-            templateUrl:'angular/views/analytics.html'
+        .when('/user/:test_id', {
+            controller: 'analyticsController',
+            controllerAs: 'analyticsCtrl',
+            templateUrl: 'angular/views/analytics.html'
+        })
+        .when('/admin', {
+            controller: 'adminController',
+            templateUrl: 'angular/views/admin.html',
+            controllerAs: 'adminCtrl'
+        })
+        .when('/admin/:id', {
+            controller: 'viewController',
+            templateUrl: 'angular/views/singleprofile.html',
+            controllerAs: 'viewCtrl'
+        })
+        .when('/admin/user/:id', {
+            controller: 'analyticsControllerAdmin',
+            controllerAs: 'analyticsCtrlForAdmin',
+            templateUrl: 'angular/views/analyticsForAdmin.html'
+
         })
 
     .otherwise({

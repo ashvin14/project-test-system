@@ -1,3 +1,19 @@
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li ><a href="#/admin">dashboard</a></li>
+                        <li class="active"><a href="#/admin/create_test">design test</a></li>
+                        <li > <a class="collection-item" ng-click="createTestCtrl.loggout()">loggout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
 <div class="container">
     <div class="row">
         <div class="col m12 s12 ">
@@ -42,12 +58,13 @@
                             <div class="row">
                                 <div class="input-field col s6 offset-s3">
                                     <div class="input-field col s6 offset-s4">
-                                        <a class="waves-effect waves-light btn" ng-click="createTestCtrl.createTest()" > submit</a>
+                                        <a class="waves-effect waves-light btn" ng-click="createTestCtrl.createTest()"> submit</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

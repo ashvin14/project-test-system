@@ -1,5 +1,9 @@
 app.controller('createTestController', function(apiservice, $window) {
-
+    this.loggout = function() {
+        apiservice.loggout().then(function(response) {
+            window.location = "#/"
+        })
+    }
     var main = this;
     this.createTest = function() {
         var data = {
@@ -17,18 +21,24 @@ app.controller('createTestController', function(apiservice, $window) {
         })
 
     }
+
 })
-app.controller('createQuestionController', function(apiservice, $routeParams, $window) {
+app.controller('createQuestionController', function(apiservice, $routeParams, $window, $interval) {
     var main = this;
     main.array = []
 
-    main.index = 1;
+    main.index = 0;
+    $interval(function() {
+        if (main.index >= $window.sessionStorage.total_questions) {
+            main.index=0
+            window.location = "#/admin"
+        }
+
+
+    }, 200)
 
 
     this.addQuestion = function() {
-        if (main.index > $window.sessionStorage.total_questions ) {
-            window.location = "#/admin"
-        }
 
         if (main.index <= $window.sessionStorage.total_questions) {
             if (main.tab == 1)

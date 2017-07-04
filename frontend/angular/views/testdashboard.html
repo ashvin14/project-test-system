@@ -1,3 +1,20 @@
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li class="active"><a href="#/user">dashboard</a></li>
+                        <li ><a href="#/user/take_test">take test</a></li>
+                        <li > <a class="collection-item" ng-click="testdashboardCtrl.loggout()">loggout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
 <div class="container white	">
     <div class="section banner">
         <h4 class="center-align">
@@ -35,12 +52,5 @@
                 </div>
             </div>
         </div>
-        <div class="col m4 s12" ng-controller="loginCtrl as loginController">
-            <ul class="collection">
-                <a href="#/user" class="collection-item active">dashboard</a>
-                <a href="#/user/take_test" class="collection-item ">take test</a>
-                <a  class="collection-item" ng-click="loginCtrl.loggout()">loggout</a>
-                <a href="#!" class="collection-item">Alvin</a>
-            </ul>
-        </div>
+        
     </div>

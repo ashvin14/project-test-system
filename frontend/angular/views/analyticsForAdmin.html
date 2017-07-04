@@ -1,0 +1,35 @@
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li ><a href="#/admin">dashboard</a></li>
+                        <li ><a href="#/admin/design_test">design test</a></li>
+                        <li > <a class="collection-item" ng-click="analyticsCtrlForAdmin.loggout()">loggout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+
+<div class="container white">
+    <div class="section banner">
+        <h4 class="center-align">Analytics of test</h4>
+    </div>
+    <div class="row">
+        <div class="col m8">
+            <br>
+            <h4 class="center-align">{{testName}}</h4>
+            <br>
+            <div class="myCHart" style="height:90%;width:90%">
+                <canvas id="line" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
+                </canvas>
+            </div>
+
+        </div>
+       
+    </div>

@@ -4,6 +4,7 @@ app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiser
     var selectedOptions  = [];
     main.index = 0;
     var time1 = 0;
+    main.id =$routeParams.id
    $scope.$on('$destroy', function (event) {
         console.log('controller destroyed')
         socket.emit('disconnect socket');
@@ -64,6 +65,11 @@ app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiser
         })
 
 
+    }
+    this.loggout= function(){
+        apiservice.loggout().then(function(response){
+            window.location ="#/"
+        })
     }
     socket.on('stop timer', function() {
         window.location = "#/user/take_test/scorecard/" + $routeParams.id

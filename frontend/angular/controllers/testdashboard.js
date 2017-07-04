@@ -1,9 +1,17 @@
 app.controller('testdashboard', function(apiservice) {
     var main = this
+    this.loggout= function(){
+        apiservice.loggout().then(function(response){
+            window.location ="#/"
+        })
+    }
 
     main.tests = [];
     apiservice.getTestId().then(function(result) {
-    	console.log(result)
+         if(result.data.notLoggedIn ==true)
+          window.location="#/"
+
+    	console.log(result.data)
         function squash(arr) {
             var tmp = [];
             for (var i = 0; i < arr.length; i++) {

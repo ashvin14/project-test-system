@@ -1,8 +1,30 @@
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li ><a href="#/user">dashboard</a></li>
+                        <li class="active"><a href="#/user/take_test">take test</a></li>
+                        <li > <a class="collection-item" ng-click="testLoader.loggout()">loggout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+
+
 <div class="container white">
+<div class="section banner">
+    <h4 class="center-align">available Tests</h4>
+</div>
     <div class="row">
         <div class="col m8">
             <div class="">
-                <div class="col s12 m8" ng-show="testLoader.test.length!=0">
+                <div class="col s12 m8 offset-m2" ng-show="testLoader.test.length!=0">
                     <!-- Modal Structure -->
                     <div ng-repeat="test in testLoader.tests ">
                         <div id="modal1" class="modal modal{{test._id}}">
@@ -19,6 +41,9 @@
                                 </p>
                                 <p style="color:black">
                                     after submitting option to question they cannot be reattempted
+                                </p>
+                                <p style="color:black">
+                                    if you end test at any moment no score will be awarded for entire test
                                 </p>
                             </div>
                             <div class="modal-footer">
@@ -53,13 +78,6 @@
                 </div>
             </div>
         </div>
-        <div class="col m4 s12">
-            <ul class="collection">
-                <a href="#/user" class="collection-item">dashboard</a>
-                <a href="#/user/take_test" class="collection-item active">take test</a>
-                <a href="#!" class="collection-item">loggout</a>
-                <a href="#!" class="collection-item">Alvin</a>
-            </ul>
-        </div>
+        
     </div>
 </div>

@@ -2,6 +2,7 @@ app.controller('alltestloader', ['apiservice','$window',function(apiservice,$win
     var main = this;
     main.tests = []
     var i = 0
+    
 
     apiservice.getAllTest().then(function(response) {
         if (response.data.notLoggedIn == true)
@@ -11,7 +12,11 @@ app.controller('alltestloader', ['apiservice','$window',function(apiservice,$win
        
 
     })
-    
+    this.loggout= function(){
+        apiservice.loggout().then(function(response){
+            window.location ="#/"
+        })
+    }
 }])
 app.directive('openModal',function() {
     return {

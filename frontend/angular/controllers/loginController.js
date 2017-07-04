@@ -1,4 +1,4 @@
-var app = angular.module('myApp',['ngRoute']);
+var app = angular.module('myApp',['ngRoute','chart.js']);
 
 app.controller('loginController',function(apiservice,$window){
 	var main = this;

@@ -31,8 +31,26 @@ exports.controllerFunction = function(app) {
     var dummyTime;
     var time;
     var userName
+    route.get('/get/test/and/scores/:test_id', function(req, res) {
+        var Result={};
+        
+        testModel.findOne({ _id: ObjectId(req.params.test_id) }, function(err, result) {
+            if (err) throw err;
+            else {
+                Result.test = result;
+                scoreModel.find({ $and: [{ test_id: ObjectId(req.params.test_id) }, { user_id: ObjectId(req.session.user._id) }] }, function(err, scores) {
+                    if (err) throw err;
+                    else {
+                        Result.scores = scores;
+                        res.json(Result)
+                    }
+                })
+
+            }
+        })
+    })
     route.get('/', function(req, res) {
-       
+
         userModel.findOne({ _id: ObjectId(req.session.user._id) }, function(err, result) {
             if (err) throw err;
             else {
@@ -41,14 +59,15 @@ exports.controllerFunction = function(app) {
         })
     })
     route.get('/:id', function(req, res) {
-        testModel.find({_id:ObjectId(req.params.id)},function(err,result){
-            if(err) throw err;
-            else{
+        testModel.find({ _id: ObjectId(req.params.id) }, function(err, result) {
+            if (err) throw err;
+            else {
                 console.log(result)
                 res.json(result)
             }
         })
     })
+
     route.get('/take_test/:id', function(req, res) {
         userModel.findOneAndUpdate({ _id: ObjectId(req.session.user._id) }, { $push: { test_attempted: ObjectId(req.params.id) } }, function(err, result) {
             if (err) throw err;

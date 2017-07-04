@@ -1,5 +1,10 @@
 app.controller('scorecardController', function(apiservice, $routeParams) {
     var main = this;
+    this.loggout= function(){
+        apiservice.loggout().then(function(response){
+            window.location ="#/"
+        })
+    }
 
     apiservice.getResults($routeParams.id).then(function(response) {
         console.log(response.data)

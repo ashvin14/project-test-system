@@ -1,4 +1,21 @@
-<div class="container white">
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li ><a href="#/user">dashboard</a></li>
+                        <li class="active"><a href="#/user/take_test">take test</a></li>
+                        <li > <a class="collection-item" ng-click="singleTestCtrl.loggout()">loggout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<div class="container-fluid white">
     <div class="section banner">
         <h4 class="center-align"> Test </h4>
     </div>
@@ -33,17 +50,8 @@
                 </div>
                 <div class="divider"></div>
             </div>
-            <p class="center-align col ">
-                <a href="#/user/take_test/scorecard/{{$routeParams.id}}" class="waver-effect waves-light btn offet-m5 offset-s6">End Test</a>
-            </p>
+           
         </div>
-        <div class="col m4 s12 ">
-            <ul class="collection">
-                <a href="#/user/" class="collection-item">dashboard</a>
-                <a href="#!" class="collection-item active">take test</a>
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
-            </ul>
-        </div>
+        
     </div>
 </div>
