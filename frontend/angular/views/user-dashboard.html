@@ -1,26 +1,33 @@
 <header>
-    <div class="navbar-fixed">
+    <div class="navbar">
         <nav>
             <div class="nav-wrapper">
                 <div class="container">
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
-                        <li ><a href="#/user">dashboard</a></li>
+                        <li><a href="#/user">dashboard</a></li>
                         <li class="active"><a href="#/user/take_test">take test</a></li>
-                        <li > <a class="collection-item" ng-click="testLoader.loggout()">loggout</a></li>
+                        <li> <a class="collection-item" ng-click="testLoader.loggout()">loggout</a></li>
+                    </ul>
+                    <ul id="mobile-demo" class="side-nav">
+                        <li><a href="#/user">dashboard</a></li>
+                        <li class="active"><a href="#/user/take_test">take test</a></li>
+                        <li> <a class="collection-item" ng-click="testLoader.loggout()">loggout</a></li>
                     </ul>
                 </div>
             </div>
+             <script>
+                $(document).ready(function() {
+                    $(".button-collapse").sideNav();
+                })
+                </script>
         </nav>
     </div>
 </header>
-
-
-
-
 <div class="container white">
-<div class="section banner">
-    <h4 class="center-align">available Tests</h4>
-</div>
+    <div class="section banner">
+        <h4 class="center-align">available Tests</h4>
+    </div>
     <div class="row">
         <div class="col m8">
             <div class="">
@@ -31,7 +38,10 @@
                             <div class="modal-content">
                                 <h4 class="center-align" style="color:black">Summary -please note this</h4>
                                 <p style="color:black">
-                                    please not that after clicking agree theres no turning back you have to attempt test
+                                    please note that after clicking agree theres no turning back you have to attempt test
+                                </p>
+                                <p style="color:black">
+                                    at one session you can only give one test
                                 </p>
                                 <p style="color:black">
                                     if you forcibly try to cancel the test you will be awarded 0 score
@@ -47,7 +57,7 @@
                                 </p>
                             </div>
                             <div class="modal-footer">
-                                <a href="#/user/take_test/{{test._id}}"  class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                                <a href="#/user/take_test/{{test._id}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                             </div>
                         </div>
                         <a class="modal-trigger " href="#modal1" id="modalTrigger" open-modal="{{test._id}}">
@@ -78,6 +88,5 @@
                 </div>
             </div>
         </div>
-        
     </div>
 </div>

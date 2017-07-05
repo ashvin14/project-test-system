@@ -53,7 +53,7 @@ app.controller('analyticsControllerAdmin',function($scope, $routeParams, apiserv
     [28, 48, 40, 19, 86, 27, 90]
   ];
   $scope.onClick = function (points, evt) {
-    console.log(points, evt);
+    
   };
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
   $scope.options = {

@@ -9,7 +9,7 @@ app.controller('adminController',function(apiservice){
 		if(response.data.notLoggedIn == true){
 			window.location="#/"
 		}
-		console.log(response.data)
+		
 		main.profiles = response.data;
 	})
 })

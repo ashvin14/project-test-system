@@ -1,0 +1,67 @@
+TITLE:- A System to take test and get realtime solution there Itself
+
+
+PROJECT_NAME:-TEST_SYSTEM
+
+
+TECHNOLOGIES USED:- 
+							1)Node
+							2)Angular
+							3)Express
+							4)Mongodb
+
+LIBRARIES USED :-
+							1)Nodemailer
+							2)PassportJs
+							3)socket.io
+
+
+
+FRONTEND_TECHNOLOGIES_USED:-
+							1)Materialize.css
+							2)Jquery
+							3)Chart.js
+							4)socket.io
+
+
+USAGE:-
+
+1)user can login via Google,facebook or manually with any email
+
+2)user can create an acc. if he doesnt have one
+
+3)user can look at all the tests taken by them
+
+4) and can also view the analytics for same by how is there performance graph over the attempts
+
+5)User can take a test on any topics which admin have made available
+
+6) as soon as user agrees with terms test counter will start and user
+	has to answer all questions within Time limit if tried forcibly to close
+	the Test.The test will not get recorded
+
+7) after completion of test user can view his scorecard which gives precise 
+   preicse information about his performance in Test.
+
+8)  User can loggout of the system
+
+9) On admin End admin can login using special account now this account is
+   not registered via UI so we have to put it manually in db
+   by 
+   1)use testSystem
+   2)db.usercollections.insert({"name":"ashvin",
+   								"emailId":"ash@123",
+   								"phone_no.":"87845164",
+   								"type":"admin"})
+
+   	The only difference being the type is 'admin'
+
+10) Admin can generate a Test ,and design Questions
+
+11)	admin can view any Users performance in his dashboard
+
+12)at one instance you can give only one test because 
+	'forceNew' is not working as expected
+
+GITHUB_LINK:-https://github.com/ashvin14/project-test-system.git
+

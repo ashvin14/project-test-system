@@ -11,7 +11,7 @@ app.controller('testdashboard', function(apiservice) {
          if(result.data.notLoggedIn ==true)
           window.location="#/"
 
-    	console.log(result.data)
+    	
         function squash(arr) {
             var tmp = [];
             for (var i = 0; i < arr.length; i++) {

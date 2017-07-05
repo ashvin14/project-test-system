@@ -1,13 +1,23 @@
 <header>
-    <div class="navbar-fixed">
+    <div class="navbar">
         <nav>
             <div class="nav-wrapper">
                 <div class="container">
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
                         <li><a href="#/signup">Signup</a></li>
                         <li><a href="#/">login</a></li>
                     </ul>
+                    <ul id="mobile-demo" class="side-nav">
+                        <li><a href="#/signup">Signup</a></li>
+                        <li><a href="#/">login</a></li>
+                    </ul>
                 </div>
+                <script>
+                $(document).ready(function() {
+                    $(".button-collapse").sideNav();
+                })
+                </script>
             </div>
         </nav>
     </div>

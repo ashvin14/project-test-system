@@ -1,12 +1,13 @@
-app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiservice','$scope' ,function($window, socket, $routeParams, apiservice,$scope) {
+app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiservice','$scope','$route' ,function($window, socket, $routeParams, apiservice,$scope,$route) {
     var main = this;
     var length;
     var selectedOptions  = [];
     main.index = 0;
     var time1 = 0;
     main.id =$routeParams.id
+    
    $scope.$on('$destroy', function (event) {
-        console.log('controller destroyed')
+        
         socket.emit('disconnect socket');
        
     });
@@ -17,7 +18,7 @@ app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiser
 
             main.minutes = Math.floor((time / (60)) % 61)
             main.seconds = Math.floor(time % 61);
-            console.log(main.minutes + ':' + main.seconds)
+            
             time1 = time;
 
         }
@@ -34,14 +35,14 @@ app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiser
 
 
     this.setOption = function(question_id) {
-        console.log("index is " + main.index)
+       
         if (main.index == length-1) {
             var data = {
                 id: $routeParams.id,
                 time: time1,
                 solution:selectedOptions
             }
-            console.log(data)
+            
             apiservice.sendResults(data).then(function(response) {
                 window.location = "#/user/take_test/scorecard/" + $routeParams.id
 
@@ -77,7 +78,7 @@ app.controller('singleTestLoader', ['$window', 'socket', '$routeParams', 'apiser
     })
     socket.emit('get question', $routeParams.id)
     socket.on('take question', function(data) {
-        console.log(data)
+       
         main.question = data
         length = data.length;
     })

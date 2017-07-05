@@ -11,7 +11,7 @@ app.controller('viewController', function(apiservice, $routeParams,$window) {
         if (result.data.notLoggedIn == true)
             window.location = "#/"
 
-        console.log(result.data)
+       
 
         function squash(arr) {
             var tmp = [];
@@ -30,7 +30,7 @@ app.controller('viewController', function(apiservice, $routeParams,$window) {
 
 
             apiservice.getTestFromIdForAdmin(id).then(function(test) {
-            	console.log(test)
+            	
                 if (test.data[0] != undefined) {
 
                     main.tests.push(test.data[0])

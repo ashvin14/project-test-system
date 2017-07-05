@@ -55,7 +55,8 @@ exports.controllerFunction = function(app, io) {
 
     }
 
-
+    //this funciton checks if the user authenticated by googe or facebook already exists in system or not 
+    //if not then it registers it
     function functionToSaveUserInDb(name, email) {
 
 
@@ -129,7 +130,7 @@ exports.controllerFunction = function(app, io) {
         profileFields: ['id', 'emails', 'name']
     }, function(accessToken, refreshToken, profile, cb) {
         process.nextTick(function() {
-            console.log(profile.emails[0])
+            
             functionToSaveUserInDb(profile.name.givenName, profile.emails[0].value).then(function(response) {
 
 
@@ -158,31 +159,33 @@ exports.controllerFunction = function(app, io) {
     route.get('/login/facebook', passport.authenticate('facebook'), function(request, response) {
 
     })
+    //after successful facebook authectication it creates a session for it and redirects to main page
     route.get('/login/successful/facebook', passport.authenticate('facebook', { failedRedirect: '/', scope: ['emails'] }), function(req, res) {
-        console.log(req.session)
+        
         userModel.findOne({ $and: [{ name: req.session.passport.user.name.givenName }, { emailId: req.session.passport.user.emails[0].value }] }, function(err, result) {
             if (err) throw err;
             else {
                 req.session.user = result;
-                console.log(req.session)
+                
                 res.redirect('/#/user')
             }
         })
     })
     route.get('/login/google', passport.authenticate('google', { scope: ['email', 'profile'] }))
 
-
+     //after successful Google authectication it creates a session for it and redirects to main page
     route.get('/login/successful/google', passport.authenticate('google', { failedRedirect: '/' }), function(req, res) {
-        console.log(req.session)
+       
         userModel.findOne({ $and: [{ name: req.session.passport.user.name.givenName }, { emailId: req.session.passport.user.emails[0].value }] }, function(err, result) {
             if (err) throw err;
             else {
                 req.session.user = result;
-                console.log(req.session)
+                
                 res.redirect('/#/user')
             }
         })
     })
+    //route to login user manually
     route.post('/login', function(request, response) {
         if (request.body.password != undefined && request.body.email != undefined) {
 
@@ -206,6 +209,7 @@ exports.controllerFunction = function(app, io) {
             })
         }
     })
+    //route to signup the user
     route.post('/signup', function(req, res) {
         if (req.body.email != undefined && req.body.password != undefined && req.body.name != undefined) {
             var user = new userModel({
@@ -225,11 +229,12 @@ exports.controllerFunction = function(app, io) {
             res.send('please donot post empty fields ')
         }
     })
+    //forgot password
     route.post('/forgotpassword', function(req, res) {
         userModel.find({ emailId: req.body.email }, function(err, result) {
             if (err) throw err;
             else {
-                console.log(result.length)
+                
                 if (result.length == 0) {
                     res.json({ "verified": false })
 
@@ -272,6 +277,7 @@ exports.controllerFunction = function(app, io) {
 
 
     })
+    //route to change password
     route.put('/changepassword', function(req, res) {
         if (req.body.password != undefined) {
             userModel.findOneAndUpdate({ emailId: req.body.email }, {
@@ -285,6 +291,7 @@ exports.controllerFunction = function(app, io) {
             })
         }
     })
+    //route to loggout
     route.get('/loggout', function(req, res) {
         req.logout();
         delete req.session.user;

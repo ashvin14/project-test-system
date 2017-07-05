@@ -7,7 +7,7 @@ app.controller('alltestloader', ['apiservice','$window',function(apiservice,$win
     apiservice.getAllTest().then(function(response) {
         if (response.data.notLoggedIn == true)
             window.location = "#/"
-        console.log(response)
+        
         main.tests = response.data;
        
 
@@ -22,7 +22,7 @@ app.directive('openModal',function() {
     return {
         restrict: "A",
         link: function(scope, elem, attrs) {
-            console.log($('.modal'))
+            
             //On click
 
             $(elem).click(function(e) {

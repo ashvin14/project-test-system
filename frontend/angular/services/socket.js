@@ -1,5 +1,5 @@
 app.factory('socket', function($rootScope) {
-
+    console.log('socket  starting . . .')
     var socket = io.connect('http://localhost:8080/take_test');
 
     return {
@@ -31,7 +31,8 @@ app.factory('socket', function($rootScope) {
                     callback.apply(socket, args);
                 });
             });
-        }
+        },
+        socket:socket
     };
 
 

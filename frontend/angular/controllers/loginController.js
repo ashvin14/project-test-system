@@ -1,3 +1,5 @@
+
+
 var app = angular.module('myApp',['ngRoute','chart.js']);
 
 app.controller('loginController',function(apiservice,$window){
@@ -27,7 +29,7 @@ app.controller('loginController',function(apiservice,$window){
 				window.location="#/user"
 			}
 
-			console.log(response)
+			
 		})
 
 

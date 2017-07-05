@@ -7,7 +7,7 @@ app.controller('scorecardController', function(apiservice, $routeParams) {
     }
 
     apiservice.getResults($routeParams.id).then(function(response) {
-        console.log(response.data)
+        
         if (response.data.notLoggedIn == true)
             window.location = "#/"
         main.result = response.data;

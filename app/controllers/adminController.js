@@ -11,7 +11,7 @@ var scoreModel = require('./../models/scoreModel.js')
 
 
 exports.controllerFunction = function(app) {
-
+//route to get analytics i.e score tests and attempts
     route.post('/get/test/and/scores/:test_id', function(req, res) {
         var Result = {};
 
@@ -30,6 +30,7 @@ exports.controllerFunction = function(app) {
             }
         })
     })
+    //ROUTE to get test given a particular test -id
     route.get('/test/:id', function(req, res) {
         testModel.find({ _id: ObjectId(req.params.id) }, function(err, result) {
             if (err) throw err;
@@ -41,6 +42,7 @@ exports.controllerFunction = function(app) {
 
     })
 
+    //route to get user from user_id
     route.get('/:id', function(req, res) {
         userModel.findOne({ _id: ObjectId(req.params.id) }, function(err, result) {
             if (err) throw err;
@@ -51,7 +53,7 @@ exports.controllerFunction = function(app) {
 
     })
 
-
+    //route to get all users from system
     route.get('/', function(req, res) {
         userModel.find({ type: 'user' }, function(err, profiles) {
             if (err) throw err;
@@ -60,6 +62,7 @@ exports.controllerFunction = function(app) {
         })
 
     })
+    //route to create test
     route.post('/create_test', function(req, res) {
         var test = new testModel({
             testName: req.body.test_name,
@@ -78,6 +81,7 @@ exports.controllerFunction = function(app) {
             }
         })
     })
+    //route to create questtions for the corresponding supplied test id
     route.post('/create_test/:test_id', function(req, res) {
 
 

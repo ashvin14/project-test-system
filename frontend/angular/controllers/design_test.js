@@ -16,7 +16,7 @@ app.controller('createTestController', function(apiservice, $window) {
         $window.sessionStorage.total_questions = main.questions;
 
         apiservice.createTest(data).then(function(response) {
-            console.log(response)
+            
             $window.location = "#/admin/create_test/" + response.data._id;
         })
 

@@ -1,25 +1,34 @@
 <header>
-    <div class="navbar-fixed">
+    <div class="navbar">
         <nav>
             <div class="nav-wrapper">
                 <div class="container">
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
                         <li class="active"><a href="#/user">dashboard</a></li>
-                        <li ><a href="#/user/take_test">take test</a></li>
-                        <li > <a class="collection-item" ng-click="testdashboardCtrl.loggout()">loggout</a></li>
+                        <li><a href="#/user/take_test">take test</a></li>
+                        <li> <a class="collection-item" ng-click="testdashboardCtrl.loggout()">loggout</a></li>
+                    </ul>
+                    <ul id="mobile-demo" class="side-nav">
+                        <li class="active"><a href="#/user">dashboard</a></li>
+                        <li><a href="#/user/take_test">take test</a></li>
+                        <li> <a class="collection-item" ng-click="testdashboardCtrl.loggout()">loggout</a></li>
                     </ul>
                 </div>
+                <script>
+                $(document).ready(function() {
+                    $(".button-collapse").sideNav();
+                })
+                </script>
             </div>
         </nav>
     </div>
 </header>
-
-
-<div class="container white	">
+<div class="container white ">
     <div class="section banner">
         <h4 class="center-align">
-			your so far progress
-		</h4>
+            your so far progress
+        </h4>
     </div>
     <div class="row">
         <div class="col m8">
@@ -52,5 +61,4 @@
                 </div>
             </div>
         </div>
-        
     </div>

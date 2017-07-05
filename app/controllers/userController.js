@@ -19,6 +19,7 @@ exports.controllerFunction = function(app) {
     var server = http.createServer(app)
     var io = require('socket.io').listen(server)
 
+    //route to take test for User
     route.get('/take_test', function(req, res) {
 
         testModel.find({}, function(er, result) {
@@ -31,6 +32,7 @@ exports.controllerFunction = function(app) {
     var dummyTime;
     var time;
     var userName
+    //route to get details for graph like test taken ,scores and no.of attempts
     route.get('/get/test/and/scores/:test_id', function(req, res) {
         var Result={};
         
@@ -49,6 +51,7 @@ exports.controllerFunction = function(app) {
             }
         })
     })
+    //route to get all user-test-attempted
     route.get('/', function(req, res) {
 
         userModel.findOne({ _id: ObjectId(req.session.user._id) }, function(err, result) {
@@ -58,22 +61,21 @@ exports.controllerFunction = function(app) {
             }
         })
     })
+
     route.get('/:id', function(req, res) {
         testModel.find({ _id: ObjectId(req.params.id) }, function(err, result) {
             if (err) throw err;
             else {
-                console.log(result)
+                
                 res.json(result)
             }
         })
     })
-
+    //it is basically used to initaite socket.io and assign time and nothing much
     route.get('/take_test/:id', function(req, res) {
         userModel.findOneAndUpdate({ _id: ObjectId(req.session.user._id) }, { $push: { test_attempted: ObjectId(req.params.id) } }, function(err, result) {
             if (err) throw err;
-            else
-                console.log(result)
-
+            
         })
 
         server.listen(8080, function() {
@@ -83,7 +85,7 @@ exports.controllerFunction = function(app) {
         testModel.findOne({ _id: ObjectId(req.params.id) }, function(er, result) {
             if (er) throw er;
             else {
-                console.log(result)
+               
                 dummyTime = time = result.duration_hours
             }
             res.json({})
@@ -91,7 +93,8 @@ exports.controllerFunction = function(app) {
 
 
     })
-
+    //socket started this socket will keep track of time and trigger
+    //an appropriate event when time is up
     var capture = io.of('/take_test')
     capture.on('connection', function(socket) {
         console.log('socket io connected')
@@ -136,7 +139,7 @@ exports.controllerFunction = function(app) {
 
         })
     })
-
+    //route to save users solution for particular test
     route.post('/take_test/solution', function(req, res) {
 
         var solution = new solutionModel({
@@ -152,9 +155,10 @@ exports.controllerFunction = function(app) {
                 res.json(result)
         })
     })
+    //route to post a scorecard based on users performance
     route.post('/scorecard/', function(req, res) {
         var scorePerQuestion;
-        console.log(req.body)
+       
         testModel.find({ _id: ObjectId(req.body.id) }, function(err, result) {
             if (err) throw err;
             else {
@@ -171,7 +175,7 @@ exports.controllerFunction = function(app) {
             var totalCorrectAnswered = 0;
 
             question.forEach(function(question) {
-                console.log(question)
+                
                 req.body.solution.forEach(function(sol) {
 
                     if (sol.question_id == question._id) {
@@ -203,6 +207,7 @@ exports.controllerFunction = function(app) {
 
 
     })
+    //route to get the scorecard for test
     route.get('/scorecard/:id', function(req, res) {
         var Result = {}
         testModel.find({ _id: ObjectId(req.params.id) }, function(err, result) {
