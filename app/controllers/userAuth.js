@@ -96,10 +96,10 @@ exports.controllerFunction = function(app, io) {
 
     const FACEBOOK_CLIENT_ID = '1397329697018363';
     const FACEBOOOK_CLIENT_SECRET = '3a2c60395a2b753e18a15afed5829e6f';
-    const callBackURL_facebook = 'http://localhost:8000/userAuth/login/successful/facebook',
+    const callBackURL_facebook = 'http://www.ashvin.tk/userAuth/login/successful/facebook',
         GOOGLE_CLIENT_ID = '325485910552-e7bjr46ucbkldhl1k44s2v05kf0hb1j2.apps.googleusercontent.com',
         GOOGLE_SECRET_ID = 'EntnfFJ8t6hsjgBjCVWV9uG2',
-        callbackURL_google = 'http://localhost:8000/userAuth/login/successful/google'
+        callbackURL_google = 'http://www.ashvin.tk/userAuth/login/successful/google'
 
     //use facebook passport
     passport.use(new Strategy({
